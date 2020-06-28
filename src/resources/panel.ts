@@ -11,11 +11,11 @@ export class Panel implements IPanel {
     constructor(args: IPanel) {
         this.id = args.id;
     }
-}
 
-export async function getPanelPassword(panelId: number): Promise<{ username: string; pass: string }> {
-    const { data } = await makeRequest(`${API_URL}/api/panel-login/${panelId}`);
-    return { username: data.n, pass: data.pswd };
+    async credentials() {
+        const { data } = await makeRequest(`${API_URL}/api/panel-login/${this.id}`);
+        return { username: data.n, pass: data.pswd };
+    }
 }
 
 export async function getPanels(): Promise<Panel[]> {

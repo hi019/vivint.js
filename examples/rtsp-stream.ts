@@ -1,28 +1,33 @@
-import * as Vivint from 'vivint.js';
+import * as Vivint from '../src'; // In your code, import from `vivint.js` instead
 import colors from 'colors';
 
 const main = async () => {
     await Vivint.login('username', 'pass');
     const panels = await Vivint.getPanels();
 
-    const { username, pass } = await Vivint.getPanelPassword(panels[0].id);
+    const { username, pass } = await panels[0].credentials();
     const cameras = await Vivint.getCameras(panels[0].id);
 
+    const possiblePanelIp = cameras[0].cia.split('/')[2].slice(0, -5);
+
+    cameras.forEach((camera) => {
+        const localUrl = `rtsp://${username}:${pass}@${camera.cous.slice(7)}`;
+        const globalUrl = `rtsp://${username}:${pass}@${camera.ceu[0].slice(7)}`;
+
+        console.log(colors.green.bold(camera.n));
+        console.log(colors.green('Local Feed'), localUrl);
+        console.log(colors.green('Global Feed'), globalUrl);
+
+        console.log();
+    });
+
+    console.log(colors.bgYellow.black('NOTE'), 'You can get an HD stream by removing _SD from the end of each URL');
     console.log(
-        colors.bgYellow.black.bold('NOTE'),
-        'To atually get an RTSP stream with these values, see https://github.com/hi019/vivintjs/wiki/test/_edit', // TODO update link
+        colors.bgYellow.black('NOTE'),
+        `If you get an error when trying to connect to a local feed, first make sure the panel ip is correct. ${colors.bold.underline(
+            'Another possible panel IP is ' + possiblePanelIp,
+        )}`,
     );
-
-    console.log();
-
-    console.log(colors.green.bold('------ RTSP STREAM INFO ------'));
-    console.log(`Username: ${username}`);
-    console.log(`Password: ${pass}`);
-
-    console.log();
-
-    console.log(colors.green.bold('------ DEVICES ------'));
-    console.log(cameras);
 };
 
 main();
