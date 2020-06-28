@@ -1,4 +1,4 @@
-import * as Vivint from '../src';
+import * as Vivint from 'vivint.js';
 import colors from 'colors';
 
 const main = async () => {
