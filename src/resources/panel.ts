@@ -64,7 +64,8 @@ export class Panel implements IPanel {
     async eventHistory(args?: IEventHistory) {
         const { data } = await makeRequest<EventHistoryResponse>(`${API_URL}/api/${this.id}/1/history`, {
             params: {
-                be: args?.before?.toISOString(),
+                // If no before date is provided, then just use the current date
+                be: args?.before ? args?.before?.toISOString() : new Date().toISOString(),
                 after: args?.after?.toISOString(),
                 lim: args?.limit,
             },
