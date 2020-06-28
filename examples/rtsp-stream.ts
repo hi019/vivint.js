@@ -1,4 +1,5 @@
 import * as Vivint from '../src'; // In your code, import from `vivint.js` instead
+import { DEVICE_TYPES } from '../src';
 import colors from 'colors';
 
 const main = async () => {
@@ -6,7 +7,7 @@ const main = async () => {
     const panels = await Vivint.getPanels();
 
     const { username, pass } = await panels[0].credentials();
-    const cameras = await Vivint.getCameras(panels[0].id);
+    const cameras = await panels[0].getDevices([DEVICE_TYPES.CAMERA]);
 
     const possiblePanelIp = cameras[0].cia.split('/')[2].slice(0, -5);
 

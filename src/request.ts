@@ -70,8 +70,8 @@ export async function login(username: string, password: string) {
     id_token = loginRes.headers['location'].match(/id_token=(.*(?=&))/)[1];
 }
 
-export async function makeRequest(url: string, config?: AxiosRequestConfig) {
-    return axios.get(url, {
+export async function makeRequest<T = any>(url: string, config?: AxiosRequestConfig) {
+    return axios.get<T>(url, {
         ...config,
         headers: {
             Cookies: `oauth_state=${oauth_state}; oidc_nonce=${oidc_nonce}; id_token=${id_token}`,

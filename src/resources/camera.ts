@@ -26,6 +26,7 @@ export class Camera implements ICamera {
     n: string;
     t: string;
     panid: number;
+    id: number;
 
     // if only we had object initalizers...
     constructor(props: ICamera) {
@@ -40,20 +41,23 @@ export class Camera implements ICamera {
         this.n = props.n;
         this.t = props.t;
         this.panid = props.panid;
+
+        // Extract camera id from audio url (camera id is used for things like retrieving streams)
+        const cameraId = this.cea.match(/\d+/);
+        if (cameraId === null) throw new Error('Could not extract camera ID from cea');
+        this.id = Number(cameraId[0]);
     }
-}
 
-export async function getCameras(panelId: number): Promise<Camera[]> {
-    const { data } = await makeRequest(`${API_URL}/api/systems/${panelId}`);
+    async getThumbnail() {
+        const { headers: thumbRequestHeaders } = await makeRequest(
+            `${API_URL}/api/${this.panid}/1/${this.id}/request-camera-thumbnail`,
+        );
 
-    const devices: any[] = data.system.par[0].d;
+        const { headers } = await makeRequest(`${API_URL}/api/${this.panid}/1/${this.id}/camera-thumbnail`, {
+            validateStatus: (s) => true,
+            maxRedirects: 0,
+        });
 
-    const cameras = devices.map((device) => {
-        if (device.t === 'camera_device') {
-            return new Camera(device);
-        }
-    });
-
-    // @ts-ignore
-    return cameras.filter((d) => d !== undefined);
+        return headers['location'];
+    }
 }
