@@ -11,6 +11,7 @@ export interface IEvent {
     did: number;
     hdt: string;
     ts: string;
+    _id: string;
 }
 
 export interface EventHistoryResponse {
@@ -19,7 +20,7 @@ export interface EventHistoryResponse {
 
 export interface IEventHistory {
     before?: Date;
-    after?: Date;
+    // after?: Date;
     limit?: number;
 }
 
@@ -37,12 +38,14 @@ export class Event {
     did: number;
     hdt: string;
     ts: Date;
+    _id: string;
 
     constructor(args: IEvent) {
         this.me = args.me;
         this.did = args.did;
         this.hdt = args.hdt;
         this.ts = new Date(args.ts);
+        this._id = args._id;
     }
 }
 
@@ -66,7 +69,8 @@ export class Panel implements IPanel {
             params: {
                 // If no before date is provided, then just use the current date
                 be: args?.before ? args?.before?.toISOString() : new Date().toISOString(),
-                after: args?.after?.toISOString(),
+                // Does not seem to work
+                // after: args?.after?.toISOString(),
                 lim: args?.limit,
             },
         });
