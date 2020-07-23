@@ -39,9 +39,15 @@
   integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
 
 "@types/pubnub@^4.27.4":
+<<<<<<< Updated upstream
   version "4.28.1"
   resolved "https://registry.yarnpkg.com/@types/pubnub/-/pubnub-4.28.1.tgz#9cf623b823afa8b901404d19c999345457a7b446"
   integrity sha512-6PXAGk53mFzuBNQXgY2Bm2BXquR8wRRtlIoP4p81tiwwLjnW3UxzAlxc2wTTxjXayq+bsv8OeJgKJvJf+FJ48w==
+=======
+  version "4.27.4"
+  resolved "https://registry.yarnpkg.com/@types/pubnub/-/pubnub-4.27.4.tgz#ad6ed2fdd3cd00634c664e9fbf1a4a1b945b52c9"
+  integrity sha512-4xMX83N7mjV4V3/iNclGDLHONRAmQh7QNP77P253HQz0/2YqVIrEpFdlEnegD3+AQt3CYX36z5/BjAEttpvDCw==
+>>>>>>> Stashed changes
 
 "@types/qs@^6.9.3":
   version "6.9.3"
@@ -955,6 +961,13 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lru-cache@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
+  integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
+  dependencies:
+    yallist "^3.0.2"
+
 make-error@^1.1.1:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
@@ -1173,9 +1186,15 @@ proxy-from-env@^1.0.0:
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 pubnub@^4.28.1:
+<<<<<<< Updated upstream
   version "4.28.4"
   resolved "https://registry.yarnpkg.com/pubnub/-/pubnub-4.28.4.tgz#81d31c561849ca640667ddf270fcb995e94c7ed6"
   integrity sha512-EqRr1ZJj79+sIrI5gzz0IGe2kJAK94DtH8ka1lW6V/sHa8lvqIEKPyZ5mgLJVmdX3QuxpG05W2YWISWiJcauDQ==
+=======
+  version "4.28.1"
+  resolved "https://registry.yarnpkg.com/pubnub/-/pubnub-4.28.1.tgz#1b752fe3c78f39daeb44548afa07a5c67b9dc16e"
+  integrity sha512-YmXkIFcd8slnZEpSPXWRL0H7tKaq4gr5RMMxnRyRFaFJm5rmESSumTSZXhxqCMIUiqWh6dKHzgKENnJlEr8YjA==
+>>>>>>> Stashed changes
   dependencies:
     agentkeepalive "^3.5.2"
     cbor-js "^0.1.0"
