@@ -48,7 +48,7 @@ export class Camera implements ICamera {
             if (cameraId === null) throw new Error('Could not extract camera ID from cea');
             this.id = Number(cameraId[0]);
         } catch (e) {
-            throw new Error(`Could not extract camera ID (cea: ${this.cea}): ${e}`);
+            throw new Error(`Could not extract camera ID: ${this}`);
         }
     }
 
