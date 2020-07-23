@@ -2,8 +2,8 @@
 
 # Installing
 
--   yarn: `yarn add https://github.com/hi019/vivint.js.git`
--   npm: `npm install https://github.com/hi019/vivint.js.git`
+-   yarn: `yarn add vivint.js`
+-   npm: `npm install vivint.js`
 
 ## Supported devices
 
