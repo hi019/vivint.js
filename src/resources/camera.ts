@@ -43,9 +43,13 @@ export class Camera implements ICamera {
         this.panid = props.panid;
 
         // Extract camera id from audio url (camera id is used for things like retrieving streams)
-        const cameraId = this.cea.match(/\d+/);
-        if (cameraId === null) throw new Error('Could not extract camera ID from cea');
-        this.id = Number(cameraId[0]);
+        try {
+            const cameraId = this.cea.match(/\d+/);
+            if (cameraId === null) throw new Error('Could not extract camera ID from cea');
+            this.id = Number(cameraId[0]);
+        } catch (e) {
+            throw new Error(`Could not extract camera ID (cea: ${this.cea}): ${e}`);
+        }
     }
 
     async getThumbnail() {
