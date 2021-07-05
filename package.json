@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "@types/qs": "^6.9.3",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "colors": "^1.4.0",
         "form-data": "^3.0.0",
         "pubnub": "^4.28.1",
